@@ -1,0 +1,1164 @@
+<p>
+    &lt;!DOCTYPE html&gt;
+</p>
+<p>
+    &lt;html lang="en"&gt;
+</p>
+<p>
+    &lt;head&gt;
+</p>
+<p>
+        &lt;meta charset="UTF-8"&gt;
+</p>
+<p>
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</p>
+<p>
+        &lt;title&gt;For You 💖&lt;/title&gt;
+</p>
+<p>
+</p>
+<p>
+        &lt;!-- Google Fonts --&gt;
+</p>
+<p>
+        &lt;link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;family=Poppins:wght@300;400;600&amp;display=swap" rel="stylesheet"&gt;
+</p>
+<p>
+</p>
+<p>
+        &lt;!-- Tailwind CSS --&gt;
+</p>
+<p>
+        &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+</p>
+<p>
+</p>
+<p>
+        &lt;!-- Canvas Confetti --&gt;
+</p>
+<p>
+        &lt;script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"&gt;&lt;/script&gt;
+</p>
+<p>
+        &lt;!-- Font Awesome --&gt;
+</p>
+<p>
+        &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;
+</p>
+<p>
+        &lt;script&gt;
+</p>
+<p>
+            tailwind.config = {
+</p>
+<p>
+                theme: {
+</p>
+<p>
+                    extend: {
+</p>
+<p>
+                        colors: {
+</p>
+<p>
+                            brand: {
+</p>
+<p>
+                                light: '#ffe4e6',
+</p>
+<p>
+                                DEFAULT: '#fb7185',
+</p>
+<p>
+                                dark: '#be123c',
+</p>
+<p>
+                            }
+</p>
+<p>
+                        },
+</p>
+<p>
+                        fontFamily: {
+</p>
+<p>
+                            hand: ['"Dancing Script"', 'cursive'],
+</p>
+<p>
+                            sans: ['"Poppins"', 'sans-serif'],
+</p>
+<p>
+                        },
+</p>
+<p>
+                        animation: {
+</p>
+<p>
+                            'float': 'float 6s ease-in-out infinite',
+</p>
+<p>
+                            'float-delayed': 'float 6s ease-in-out 3s infinite',
+</p>
+<p>
+                            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+</p>
+<p>
+                            'wiggle': 'wiggle 1s ease-in-out infinite',
+</p>
+<p>
+                        },
+</p>
+<p>
+                        keyframes: {
+</p>
+<p>
+                            float: {
+</p>
+<p>
+                                '0%, 100%': { transform: 'translateY(0)' },
+</p>
+<p>
+                                '50%': { transform: 'translateY(-20px)' },
+</p>
+<p>
+                            },
+</p>
+<p>
+                            wiggle: {
+</p>
+<p>
+                                '0%, 100%': { transform: 'rotate(-3deg)' },
+</p>
+<p>
+                                '50%': { transform: 'rotate(3deg)' },
+</p>
+<p>
+                            }
+</p>
+<p>
+                        }
+</p>
+<p>
+                    }
+</p>
+<p>
+                }
+</p>
+<p>
+            }
+</p>
+<p>
+        &lt;/script&gt;
+</p>
+<p>
+        &lt;style&gt;
+</p>
+<p>
+            body {
+</p>
+<p>
+                overflow: hidden;
+</p>
+<p>
+                background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+</p>
+<p>
+            }
+</p>
+<p>
+</p>
+<p>
+            /* Dynamic Background */
+</p>
+<p>
+            .bg-shapes {
+</p>
+<p>
+                position: absolute;
+</p>
+<p>
+                top: 0;
+</p>
+<p>
+                left: 0;
+</p>
+<p>
+                width: 100%;
+</p>
+<p>
+                height: 100%;
+</p>
+<p>
+                z-index: -1;
+</p>
+<p>
+                overflow: hidden;
+</p>
+<p>
+            }
+</p>
+<p>
+            .shape {
+</p>
+<p>
+                position: absolute;
+</p>
+<p>
+                border-radius: 50%;
+</p>
+<p>
+                opacity: 0.6;
+</p>
+<p>
+                filter: blur(50px);
+</p>
+<p>
+            }
+</p>
+<p>
+            .shape-1 {
+</p>
+<p>
+                background: #fbcfe8;
+</p>
+<p>
+                width: 400px;
+</p>
+<p>
+                height: 400px;
+</p>
+<p>
+                top: -100px;
+</p>
+<p>
+                left: -100px;
+</p>
+<p>
+                animation: moveShape1 20s infinite alternate;
+</p>
+<p>
+            }
+</p>
+<p>
+            .shape-2 {
+</p>
+<p>
+                background: #ddd6fe;
+</p>
+<p>
+                width: 300px;
+</p>
+<p>
+                height: 300px;
+</p>
+<p>
+                bottom: -50px;
+</p>
+<p>
+                right: -50px;
+</p>
+<p>
+                animation: moveShape2 15s infinite alternate;
+</p>
+<p>
+            }
+</p>
+<p>
+            .shape-3 {
+</p>
+<p>
+                background: #fed7aa;
+</p>
+<p>
+                width: 200px;
+</p>
+<p>
+                height: 200px;
+</p>
+<p>
+                top: 40%;
+</p>
+<p>
+                left: 40%;
+</p>
+<p>
+                animation: moveShape3 18s infinite alternate;
+</p>
+<p>
+            }
+</p>
+<p>
+            @keyframes moveShape1 {
+</p>
+<p>
+                0% { transform: translate(0, 0) rotate(0deg); }
+</p>
+<p>
+                100% { transform: translate(100px, 50px) rotate(20deg); }
+</p>
+<p>
+            }
+</p>
+<p>
+            @keyframes moveShape2 {
+</p>
+<p>
+                0% { transform: translate(0, 0); }
+</p>
+<p>
+                100% { transform: translate(-80px, -60px); }
+</p>
+<p>
+            }
+</p>
+<p>
+            @keyframes moveShape3 {
+</p>
+<p>
+                0% { transform: translate(0, 0) scale(1); }
+</p>
+<p>
+                100% { transform: translate(-40px, 80px) scale(1.2); }
+</p>
+<p>
+            }
+</p>
+<p>
+            /* Glassmorphism */
+</p>
+<p>
+            .glass-card {
+</p>
+<p>
+                background: rgba(255, 255, 255, 0.7);
+</p>
+<p>
+                backdrop-filter: blur(20px);
+</p>
+<p>
+                -webkit-backdrop-filter: blur(20px);
+</p>
+<p>
+                border: 1px solid rgba(255, 255, 255, 0.8);
+</p>
+<p>
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+</p>
+<p>
+            }
+</p>
+<p>
+            /* Envelope Styles */
+</p>
+<p>
+            .envelope-wrapper {
+</p>
+<p>
+                perspective: 1000px;
+</p>
+<p>
+            }
+</p>
+<p>
+</p>
+<p>
+            .envelope {
+</p>
+<p>
+                position: relative;
+</p>
+<p>
+                transform-style: preserve-3d;
+</p>
+<p>
+                transition: transform 0.8s ease;
+</p>
+<p>
+            }
+</p>
+<p>
+            .envelope.open {
+</p>
+<p>
+                transform: rotateX(180deg);
+</p>
+<p>
+                opacity: 0;
+</p>
+<p>
+                pointer-events: none;
+</p>
+<p>
+            }
+</p>
+<p>
+            .letter-content {
+</p>
+<p>
+                opacity: 0;
+</p>
+<p>
+                transform: scale(0.8);
+</p>
+<p>
+                transition: all 0.8s ease;
+</p>
+<p>
+                display: none;
+</p>
+<p>
+            }
+</p>
+<p>
+            .letter-content.active {
+</p>
+<p>
+                opacity: 1;
+</p>
+<p>
+                transform: scale(1);
+</p>
+<p>
+                display: flex;
+</p>
+<p>
+            }
+</p>
+<p>
+            /* Smooth button movements */
+</p>
+<p>
+            #noBtn {
+</p>
+<p>
+                transition: all 0.2s ease;
+</p>
+<p>
+            }
+</p>
+<p>
+            /* Typewriter cursor */
+</p>
+<p>
+            .cursor {
+</p>
+<p>
+                display: inline-block;
+</p>
+<p>
+                width: 2px;
+</p>
+<p>
+                background-color: #be123c;
+</p>
+<p>
+                animation: blink 1s infinite;
+</p>
+<p>
+            }
+</p>
+<p>
+            @keyframes blink {
+</p>
+<p>
+                0%, 100% { opacity: 1; }
+</p>
+<p>
+                50% { opacity: 0; }
+</p>
+<p>
+            }
+</p>
+<p>
+            /* Heart rain */
+</p>
+<p>
+            .heart-rain {
+</p>
+<p>
+                position: fixed;
+</p>
+<p>
+                top: -10vh;
+</p>
+<p>
+                color: #fb7185;
+</p>
+<p>
+                font-size: 1.5rem;
+</p>
+<p>
+                animation: fall linear forwards;
+</p>
+<p>
+                z-index: 50;
+</p>
+<p>
+            }
+</p>
+<p>
+            @keyframes fall {
+</p>
+<p>
+                to { transform: translateY(110vh) rotate(360deg); }
+</p>
+<p>
+            }
+</p>
+<p>
+        &lt;/style&gt;
+</p>
+<p>
+    &lt;/head&gt;
+</p>
+<p>
+    &lt;body class="h-screen w-screen flex items-center justify-center font-sans text-slate-800"&gt;
+</p>
+<p>
+        &lt;!-- Background Shapes --&gt;
+</p>
+<p>
+        &lt;div class="bg-shapes"&gt;
+</p>
+<p>
+            &lt;div class="shape shape-1"&gt;&lt;/div&gt;
+</p>
+<p>
+            &lt;div class="shape shape-2"&gt;&lt;/div&gt;
+</p>
+<p>
+            &lt;div class="shape shape-3"&gt;&lt;/div&gt;
+</p>
+<p>
+        &lt;/div&gt;
+</p>
+<p>
+        &lt;main class="relative w-full max-w-lg p-4"&gt;
+</p>
+<p>
+</p>
+<p>
+            &lt;!-- Stage 1: The Envelope --&gt;
+</p>
+<p>
+            &lt;div id="stage1" class="w-full flex flex-col items-center justify-center z-10 transition-all duration-700"&gt;
+</p>
+<p>
+                &lt;div class="glass-card p-10 rounded-3xl text-center hover:scale-105 transition-transform duration-300 cursor-pointer group" onclick="openEnvelope()"&gt;
+</p>
+<p>
+                    &lt;div class="relative mb-6"&gt;
+</p>
+<p>
+                        &lt;div class="text-8xl text-brand drop-shadow-lg animate-float"&gt;
+</p>
+<p>
+                            &lt;i class="fa-solid fa-envelope-open-text"&gt;&lt;/i&gt;
+</p>
+<p>
+                        &lt;/div&gt;
+</p>
+<p>
+                        &lt;div class="absolute -top-2 -right-2 bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce"&gt;
+</p>
+<p>
+                            1 New
+</p>
+<p>
+                        &lt;/div&gt;
+</p>
+<p>
+                    &lt;/div&gt;
+</p>
+<p>
+                    &lt;h1 class="text-3xl font-bold text-slate-700 mb-2"&gt;You have a message&lt;/h1&gt;
+</p>
+<p>
+                    &lt;p class="text-slate-500"&gt;From: Your Secret Admirer&lt;/p&gt;
+</p>
+<p>
+                    &lt;div class="mt-6 text-brand-dark font-semibold text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity"&gt;
+</p>
+<p>
+                        Click to Open
+</p>
+<p>
+                    &lt;/div&gt;
+</p>
+<p>
+                &lt;/div&gt;
+</p>
+<p>
+            &lt;/div&gt;
+</p>
+<p>
+            &lt;!-- Stage 2: The Letter &amp; Question --&gt;
+</p>
+<p>
+            &lt;div id="stage2" class="letter-content glass-card rounded-3xl w-full p-8 relative flex-col items-center text-center min-h-[500px] justify-center"&gt;
+</p>
+<p>
+</p>
+<p>
+                &lt;!-- Progress Bar --&gt;
+</p>
+<p>
+                &lt;div class="w-full bg-slate-200 h-1.5 rounded-full mb-8 overflow-hidden"&gt;
+</p>
+<p>
+                    &lt;div class="bg-brand h-full w-0 transition-all duration-1000" id="progressBar"&gt;&lt;/div&gt;
+</p>
+<p>
+                &lt;/div&gt;
+</p>
+<p>
+                &lt;div class="mb-6 relative"&gt;
+</p>
+<p>
+                    &lt;i class="fa-solid fa-heart text-5xl text-brand animate-pulse-slow"&gt;&lt;/i&gt;
+</p>
+<p>
+                    &lt;i class="fa-solid fa-heart text-2xl text-brand-light absolute -top-4 -right-4 animate-float"&gt;&lt;/i&gt;
+</p>
+<p>
+                    &lt;i class="fa-solid fa-heart text-xl text-brand-dark absolute bottom-0 -left-6 animate-float-delayed"&gt;&lt;/i&gt;
+</p>
+<p>
+                &lt;/div&gt;
+</p>
+<p>
+                &lt;!-- Dynamic Text Area --&gt;
+</p>
+<p>
+                &lt;div class="min-h-[120px] flex items-center justify-center"&gt;
+</p>
+<p>
+                    &lt;h2 id="typingText" class="text-2xl md:text-3xl font-hand font-bold text-slate-800 leading-relaxed"&gt;&lt;/h2&gt;&lt;span class="cursor"&gt;|&lt;/span&gt;
+</p>
+<p>
+                &lt;/div&gt;
+</p>
+<p>
+                &lt;!-- Interaction Area --&gt;
+</p>
+<p>
+                &lt;div id="interactionArea" class="mt-10 opacity-0 transition-opacity duration-500 flex flex-col items-center w-full"&gt;
+</p>
+<p>
+                    &lt;div class="flex flex-wrap gap-4 justify-center w-full relative h-20"&gt;
+</p>
+<p>
+                        &lt;button onclick="acceptLove()" class="bg-brand hover:bg-brand-dark text-white font-bold py-3 px-10 rounded-full shadow-lg transform transition hover:scale-110 z-20 text-lg"&gt;
+</p>
+<p>
+                            Yes! 💖
+</p>
+<p>
+                        &lt;/button&gt;
+</p>
+<p>
+                        &lt;button id="noBtn" class="bg-white text-slate-500 font-bold py-3 px-10 rounded-full shadow-md border border-slate-200 z-10 transition-all duration-100 hover:bg-slate-100"&gt;
+</p>
+<p>
+                            No 🙄
+</p>
+<p>
+                        &lt;/button&gt;
+</p>
+<p>
+                    &lt;/div&gt;
+</p>
+<p>
+                    &lt;p class="text-xs text-slate-400 mt-8 italic"&gt;(P.S. The 'No' button is broken by design 😉)&lt;/p&gt;
+</p>
+<p>
+                &lt;/div&gt;
+</p>
+<p>
+            &lt;/div&gt;
+</p>
+<p>
+            &lt;!-- Stage 3: Success --&gt;
+</p>
+<p>
+            &lt;div id="stage3" class="hidden glass-card rounded-3xl w-full p-8 flex-col items-center text-center animate-bounce-in"&gt;
+</p>
+<p>
+                &lt;div class="text-6xl mb-4 animate-wiggle"&gt;🥰&lt;/div&gt;
+</p>
+<p>
+                &lt;h1 class="text-4xl font-hand font-bold text-brand-dark mb-4"&gt;It's a Date!&lt;/h1&gt;
+</p>
+<p>
+                &lt;p class="text-lg text-slate-600 mb-6"&gt;I knew you'd say yes! Get ready for chocolates, flowers, and me.&lt;/p&gt;
+</p>
+<p>
+</p>
+<p>
+                &lt;div class="bg-white/50 p-4 rounded-xl w-full mb-6 text-left"&gt;
+</p>
+<p>
+                    &lt;div class="flex items-center gap-3 mb-2"&gt;
+</p>
+<p>
+                        &lt;i class="fa-regular fa-calendar text-brand"&gt;&lt;/i&gt;
+</p>
+<p>
+                        &lt;span class="font-semibold text-slate-700"&gt;Feb 14th&lt;/span&gt;
+</p>
+<p>
+                    &lt;/div&gt;
+</p>
+<p>
+                    &lt;div class="flex items-center gap-3"&gt;
+</p>
+<p>
+                        &lt;i class="fa-solid fa-location-dot text-brand"&gt;&lt;/i&gt;
+</p>
+<p>
+                        &lt;span class="font-semibold text-slate-700"&gt;Somewhere Special&lt;/span&gt;
+</p>
+<p>
+                    &lt;/div&gt;
+</p>
+<p>
+                &lt;/div&gt;
+</p>
+<p>
+                &lt;button onclick="location.reload()" class="text-brand hover:text-brand-dark underline text-sm"&gt;Replay&lt;/button&gt;
+</p>
+<p>
+            &lt;/div&gt;
+</p>
+<p>
+        &lt;/main&gt;
+</p>
+<p>
+        &lt;script&gt;
+</p>
+<p>
+            // DOM Elements
+</p>
+<p>
+            const stage1 = document.getElementById('stage1');
+</p>
+<p>
+            const stage2 = document.getElementById('stage2');
+</p>
+<p>
+            const stage3 = document.getElementById('stage3');
+</p>
+<p>
+            const typingText = document.getElementById('typingText');
+</p>
+<p>
+            const interactionArea = document.getElementById('interactionArea');
+</p>
+<p>
+            const noBtn = document.getElementById('noBtn');
+</p>
+<p>
+            const progressBar = document.getElementById('progressBar');
+</p>
+<p>
+            // Configuration
+</p>
+<p>
+            const message = "Hey beautiful... I've been meaning to ask you something very important. Will you be my Valentine?";
+</p>
+<p>
+            const typingSpeed = 50;
+</p>
+<p>
+</p>
+<p>
+            // Transition to Letter
+</p>
+<p>
+            function openEnvelope() {
+</p>
+<p>
+                // Animate out stage 1
+</p>
+<p>
+                stage1.style.opacity = '0';
+</p>
+<p>
+                stage1.style.transform = 'scale(0.8)';
+</p>
+<p>
+</p>
+<p>
+                setTimeout(() =&gt; {
+</p>
+<p>
+                    stage1.style.display = 'none';
+</p>
+<p>
+                    stage2.classList.add('active');
+</p>
+<p>
+</p>
+<p>
+                    // Start typing effect after small delay
+</p>
+<p>
+                    setTimeout(() =&gt; {
+</p>
+<p>
+                        progressBar.style.width = '100%';
+</p>
+<p>
+                        typeWriter();
+</p>
+<p>
+                    }, 500);
+</p>
+<p>
+                }, 500);
+</p>
+<p>
+            }
+</p>
+<p>
+            // Typewriter Effect
+</p>
+<p>
+            let charIndex = 0;
+</p>
+<p>
+            function typeWriter() {
+</p>
+<p>
+                if (charIndex &lt; message.length) {
+</p>
+<p>
+                    typingText.innerHTML += message.charAt(charIndex);
+</p>
+<p>
+                    charIndex++;
+</p>
+<p>
+                    setTimeout(typeWriter, typingSpeed);
+</p>
+<p>
+                } else {
+</p>
+<p>
+                    // Typing finished, show buttons
+</p>
+<p>
+                    document.querySelector('.cursor').style.display = 'none';
+</p>
+<p>
+                    interactionArea.classList.remove('opacity-0');
+</p>
+<p>
+                }
+</p>
+<p>
+            }
+</p>
+<p>
+            // The "Impossible No" Logic
+</p>
+<p>
+            function moveButton(e) {
+</p>
+<p>
+                const container = document.getElementById('interactionArea');
+</p>
+<p>
+                const containerRect = container.getBoundingClientRect();
+</p>
+<p>
+                const btnRect = noBtn.getBoundingClientRect();
+</p>
+<p>
+                // Calculate new position bounded by container/screen
+</p>
+<p>
+                // We'll use fixed positioning relative to viewport to ensure it can jump anywhere safely or absolute relative to parent
+</p>
+<p>
+</p>
+<p>
+                // Simple random logic
+</p>
+<p>
+                const maxX = window.innerWidth - btnRect.width - 40;
+</p>
+<p>
+                const maxY = window.innerHeight - btnRect.height - 40;
+</p>
+<p>
+                let newX = Math.random() * maxX;
+</p>
+<p>
+                let newY = Math.random() * maxY;
+</p>
+<p>
+</p>
+<p>
+                // Ensure it doesn't go off screen (clamping)
+</p>
+<p>
+                newX = Math.max(20, Math.min(newX, maxX));
+</p>
+<p>
+                newY = Math.max(20, Math.min(newY, maxY));
+</p>
+<p>
+                // Apply fixed position to break out of layout flow
+</p>
+<p>
+                noBtn.style.position = 'fixed';
+</p>
+<p>
+                noBtn.style.left = newX + 'px';
+</p>
+<p>
+                noBtn.style.top = newY + 'px';
+</p>
+<p>
+</p>
+<p>
+                // Add frustrated emojis to button text occasionally
+</p>
+<p>
+                const texts = ["No 🙄", "Are you sure?", "Really?", "Try again!", "Too slow!", "Nope!"];
+</p>
+<p>
+                noBtn.innerText = texts[Math.floor(Math.random() * texts.length)];
+</p>
+<p>
+            }
+</p>
+<p>
+            // Event listeners for desktop and mobile
+</p>
+<p>
+            noBtn.addEventListener('mouseover', moveButton);
+</p>
+<p>
+            noBtn.addEventListener('touchstart', (e) =&gt; {
+</p>
+<p>
+                e.preventDefault(); // prevent click
+</p>
+<p>
+                moveButton();
+</p>
+<p>
+            });
+</p>
+<p>
+            noBtn.addEventListener('click', (e) =&gt; {
+</p>
+<p>
+                e.preventDefault();
+</p>
+<p>
+                moveButton();
+</p>
+<p>
+            });
+</p>
+<p>
+            // Success &amp; Celebration
+</p>
+<p>
+            function acceptLove() {
+</p>
+<p>
+                // Trigger Confetti
+</p>
+<p>
+                fireConfetti();
+</p>
+<p>
+</p>
+<p>
+                // Start Heart Rain
+</p>
+<p>
+                createHeartRain();
+</p>
+<p>
+                // Transition UI
+</p>
+<p>
+                stage2.style.opacity = '0';
+</p>
+<p>
+                setTimeout(() =&gt; {
+</p>
+<p>
+                    stage2.style.display = 'none';
+</p>
+<p>
+                    stage3.classList.remove('hidden');
+</p>
+<p>
+                    stage3.style.display = 'flex';
+</p>
+<p>
+</p>
+<p>
+                    // More confetti on success screen load
+</p>
+<p>
+                    setTimeout(fireConfetti, 300);
+</p>
+<p>
+                }, 500);
+</p>
+<p>
+            }
+</p>
+<p>
+            // Confetti Function
+</p>
+<p>
+            function fireConfetti() {
+</p>
+<p>
+                const duration = 3000;
+</p>
+<p>
+                const end = Date.now() + duration;
+</p>
+<p>
+                (function frame() {
+</p>
+<p>
+                    confetti({
+</p>
+<p>
+                        particleCount: 5,
+</p>
+<p>
+                        angle: 60,
+</p>
+<p>
+                        spread: 55,
+</p>
+<p>
+                        origin: { x: 0 },
+</p>
+<p>
+                        colors: ['#fb7185', '#be123c', '#ffd700']
+</p>
+<p>
+                    });
+</p>
+<p>
+                    confetti({
+</p>
+<p>
+                        particleCount: 5,
+</p>
+<p>
+                        angle: 120,
+</p>
+<p>
+                        spread: 55,
+</p>
+<p>
+                        origin: { x: 1 },
+</p>
+<p>
+                        colors: ['#fb7185', '#be123c', '#ffd700']
+</p>
+<p>
+                    });
+</p>
+<p>
+                    if (Date.now() &lt; end) {
+</p>
+<p>
+                        requestAnimationFrame(frame);
+</p>
+<p>
+                    }
+</p>
+<p>
+                }());
+</p>
+<p>
+            }
+</p>
+<p>
+            // Heart Rain Animation
+</p>
+<p>
+            function createHeartRain() {
+</p>
+<p>
+                const container = document.body;
+</p>
+<p>
+                const hearts = ['💖', '🥰', '🌹', '💑', '💌'];
+</p>
+<p>
+</p>
+<p>
+                for (let i = 0; i &lt; 30; i++) {
+</p>
+<p>
+                    setTimeout(() =&gt; {
+</p>
+<p>
+                        const heart = document.createElement('div');
+</p>
+<p>
+                        heart.classList.add('heart-rain');
+</p>
+<p>
+                        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+</p>
+<p>
+                        heart.style.left = Math.random() * 100 + 'vw';
+</p>
+<p>
+                        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+</p>
+<p>
+                        heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+</p>
+<p>
+                        container.appendChild(heart);
+</p>
+<p>
+</p>
+<p>
+                        // Cleanup
+</p>
+<p>
+                        setTimeout(() =&gt; {
+</p>
+<p>
+                            heart.remove();
+</p>
+<p>
+                        }, 5000);
+</p>
+<p>
+                    }, i * 100);
+</p>
+<p>
+                }
+</p>
+<p>
+            }
+</p>
+<p>
+        &lt;/script&gt;
+</p>
+<p>
+    &lt;/body&gt;
+</p>
+<p>
+    &lt;/html&gt;
+</p>
